@@ -2,15 +2,21 @@
 
 Queue Calling Flutter application.
 
-## Getting Started
+### Language
+- dart
 
-This project is a starting point for a Flutter application.
+### Framework
+- flutter
 
-A few resources to get you started if this is your first Flutter project:
+### Requirements
+- tcp/ip socket client.
+- show queue 6 gruop.
+- show the waiting queue number of each group.
+- show the holding queue number of each group.
+- call queue.
+- hold queue.
+- end queue.
+- call manaul queue.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### ScreenShots
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
