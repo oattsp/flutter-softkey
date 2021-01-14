@@ -23,8 +23,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
+  validators: ^2.0.1
+  shared_preferences: ^0.5.12+4
+  bot_toast: ^3.0.5
+  package_info: ^0.4.3+2
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.1
@@ -34,7 +36,12 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.8.1
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -62,10 +69,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+     - family: Sarabun
+       fonts:
+         - asset: assets/fonts/Sarabun-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
