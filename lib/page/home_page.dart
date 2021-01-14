@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_softkey/model/queue_model.dart';
 import 'package:flutter_softkey/page/settings_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wakelock/wakelock.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -159,7 +160,10 @@ class _HomePageState extends State<HomePage> {
                         BotToast.showText(
                             text: 'กรุณาระบุหมายเลขคิว 1-4 หลัก',
                             duration: Duration(seconds: 2),
-                            contentColor: Colors.red);
+                            contentColor: Colors.red,
+                            align: Alignment(0, 0.55),
+                            contentPadding: const EdgeInsets.all(10.0),
+                            textStyle: TextStyle(fontSize: 18, color: Colors.white));
                       }
                     },
                     child: Text('CALL',
@@ -176,7 +180,10 @@ class _HomePageState extends State<HomePage> {
                         BotToast.showText(
                             text: 'กรุณาระบุหมายเลขคิว 1-4 หลัก',
                             duration: Duration(seconds: 2),
-                            contentColor: Colors.red);
+                            contentColor: Colors.red,
+                            align: Alignment(0, 0.55),
+                            contentPadding: const EdgeInsets.all(10.0),
+                            textStyle: TextStyle(fontSize: 18, color: Colors.white));
                       }
                     },
                     child: Text('HOLD',
@@ -193,7 +200,10 @@ class _HomePageState extends State<HomePage> {
                         BotToast.showText(
                             text: 'กรุณาระบุหมายเลขคิว 1-4 หลัก',
                             duration: Duration(seconds: 2),
-                            contentColor: Colors.red);
+                            contentColor: Colors.red,
+                            align: Alignment(0, 0.55),
+                            contentPadding: const EdgeInsets.all(10.0),
+                            textStyle: TextStyle(fontSize: 18, color: Colors.white));
                       }
                     },
                     child: Text('END',
@@ -376,14 +386,20 @@ class _HomePageState extends State<HomePage> {
     var _ip = await prefs.get('ip');
     var _port = await prefs.get('port');
     var _channel = await prefs.get('channel');
+    var _wakelock = await prefs.getBool('wakelock');
 
-    if (_ip == null || _port == null || _channel == null) {
+    if (_ip == null || _port == null || _channel == null || _wakelock == null) {
       await Navigator.push(context,
           MaterialPageRoute(builder: (context) => SettingsPage(false)));
       _getSetting();
     }
 
     try {
+      if (_wakelock == true) {
+        Wakelock.enable();
+      } else if (_wakelock == false) {
+        Wakelock.disable();
+      }
       ip = _ip;
       port = int.parse(_port);
       channel = int.parse(_channel);

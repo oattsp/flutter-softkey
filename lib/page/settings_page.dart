@@ -5,6 +5,7 @@ import 'package:validators/validators.dart';
 
 class SettingsPage extends StatefulWidget {
   bool arrow;
+
   SettingsPage(this.arrow);
 
   @override
@@ -17,6 +18,7 @@ class _SettingsPageState extends State<SettingsPage> {
   TextEditingController ctrlPort = TextEditingController();
   TextEditingController ctrlChannel = TextEditingController();
   String version;
+  bool isWakelock = false;
 
   @override
   void initState() {
@@ -76,6 +78,32 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: TextStyle(fontSize: 20),
                       decoration:
                           InputDecoration(filled: true, labelText: 'CHANNEL'),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'WAKELOCK',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        Switch(
+                          value: isWakelock,
+                          onChanged: (value) {
+                            setState(() {
+                              isWakelock = value;
+                            });
+                          },
+                          activeTrackColor: Colors.lightGreenAccent,
+                          activeColor: Colors.green,
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(
@@ -169,10 +197,12 @@ class _SettingsPageState extends State<SettingsPage> {
     var ip = await prefs.get('ip');
     var port = await prefs.get('port');
     var channel = await prefs.get('channel');
+    var wakelock = await prefs.getBool('wakelock');
 
     ip == null ? ctrlIPAddress.text = '192.168.1.44' : ctrlIPAddress.text = ip;
     port == null ? ctrlPort.text = '7777' : ctrlPort.text = port;
     channel == null ? ctrlChannel.text = '1' : ctrlChannel.text = channel;
+    wakelock == null ? isWakelock = false : isWakelock = wakelock;
   }
 
   Future _saveSetting() async {
@@ -181,6 +211,7 @@ class _SettingsPageState extends State<SettingsPage> {
       await prefs.setString('ip', ctrlIPAddress.text);
       await prefs.setString('port', ctrlPort.text);
       await prefs.setString('channel', ctrlChannel.text);
+      await prefs.setBool('wakelock', isWakelock);
       print('save setting ok');
       Navigator.of(context).pop({'result': 'ok'});
     } else {
