@@ -23,14 +23,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  validators: ^2.0.1
-  shared_preferences: ^0.5.12+4
-  bot_toast: ^3.0.5
-  package_info: ^0.4.3+2
-  wakelock: ^0.2.1+1
+  validators: ^3.0.0
+  shared_preferences: ^2.0.8
+  bot_toast: ^4.0.1
+  package_info: ^2.0.2
+  wakelock: ^0.5.6
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.1
+  cupertino_icons: ^1.0.4
 
 dev_dependencies:
   flutter_test:

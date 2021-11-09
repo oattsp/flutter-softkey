@@ -73,12 +73,8 @@ class _HomePageState extends State<HomePage> {
               value: queueType,
               items: <String>[
                 'ทั้งหมด',
-                '1 ท่าน',
-                '2 ท่าน',
-                '3 ท่าน',
-                '4 ท่าน',
-                '5 ท่าน',
-                '6 ท่านขึ้นไป'
+                'สั่งกลับบ้าน',
+                'ทานที่ร้าน'
               ].map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -96,21 +92,13 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
               child: Container(
-                color: Color.fromRGBO(39, 39, 37, 1),
+                color: Colors.green[100],
                 child: Builder(
                     builder: (context) {
-                      if (queueType == '1 ท่าน') {
+                      if (queueType == 'สั่งกลับบ้าน') {
                         return customListView(waits.where((element) => element.group == 1).toList());
-                      } else if (queueType == '2 ท่าน') {
+                      } else if (queueType == 'ทานที่ร้าน') {
                         return customListView(waits.where((element) => element.group == 2).toList());
-                      } else if (queueType == '3 ท่าน') {
-                        return customListView(waits.where((element) => element.group == 3).toList());
-                      } else if (queueType == '4 ท่าน') {
-                        return customListView(waits.where((element) => element.group == 4).toList());
-                      } else if (queueType == '5 ท่าน') {
-                        return customListView(waits.where((element) => element.group == 5).toList());
-                      } else if (queueType == '6 ท่านขึ้นไป') {
-                        return customListView(waits.where((element) => element.group == 6).toList());
                       } else {
                         return customListView(waits);
                       }
@@ -122,7 +110,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             height: 73,
             child: Card(
-              color: Colors.black26,
+              color: Colors.white70,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -150,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   RaisedButton(
-                    color: Color.fromRGBO(39, 39, 37, 1),
+                    color: Colors.green,
                     onPressed: () {
                       FocusManager.instance.primaryFocus.unfocus();
                       String number = ctrlQueue.text.trim();
@@ -170,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(color: Colors.white, fontSize: 20)),
                   ),
                   RaisedButton(
-                    color: Color.fromRGBO(39, 39, 37, 1),
+                    color: Colors.green,
                     onPressed: () {
                       FocusManager.instance.primaryFocus.unfocus();
                       String number = ctrlQueue.text.trim();
@@ -190,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(color: Colors.white, fontSize: 20)),
                   ),
                   RaisedButton(
-                    color: Color.fromRGBO(39, 39, 37, 1),
+                    color: Colors.green,
                     onPressed: () {
                       FocusManager.instance.primaryFocus.unfocus();
                       String number = ctrlQueue.text.trim();
@@ -216,7 +204,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: Container(
-        color: Color.fromRGBO(39, 39, 37, 1),
+        color: Colors.green,
         child: Row(
           children: [
             Expanded(
@@ -246,7 +234,7 @@ class _HomePageState extends State<HomePage> {
             padding:
             const EdgeInsets.only(left: 5, right: 5, top: 5),
             child: Card(
-                color: Color.fromRGBO(159, 145, 89, 1),
+                color: Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -258,10 +246,10 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                             fontSize: 36,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(39, 39, 37, 1)),
+                            color: Colors.black),
                       ),
                       RaisedButton(
-                        color: Color.fromRGBO(39, 39, 37, 1),
+                        color: Colors.green,
                         onPressed: () {
                           FocusManager.instance.primaryFocus.unfocus();
                           _callQueue(data[index].number);
@@ -273,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       RaisedButton(
-                        color: Color.fromRGBO(39, 39, 37, 1),
+                        color: Colors.green,
                         onPressed: () {
                           FocusManager.instance.primaryFocus.unfocus();
                           _holdQueue(data[index].number);
@@ -285,7 +273,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       RaisedButton(
-                        color: Color.fromRGBO(39, 39, 37, 1),
+                        color: Colors.green,
                         onPressed: () {
                           FocusManager.instance.primaryFocus.unfocus();
                           _endQueue(data[index].number);
@@ -307,7 +295,7 @@ class _HomePageState extends State<HomePage> {
     return Container(
       height: 314,
       width: 300,
-      color: Color.fromRGBO(39, 39, 37, 1),
+      color: Colors.green[100],
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: holds.length,
@@ -316,7 +304,7 @@ class _HomePageState extends State<HomePage> {
             padding:
             const EdgeInsets.only(left: 5, right: 5, top: 5),
             child: Card(
-                color: Color.fromRGBO(159, 145, 89, 1),
+                color: Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -328,10 +316,10 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(39, 39, 37, 1)),
+                            color: Colors.black),
                       ),
                       RaisedButton(
-                        color: Color.fromRGBO(39, 39, 37, 1),
+                        color: Colors.green,
                         onPressed: () {
                           FocusManager.instance.primaryFocus.unfocus();
                           _callQueue(holds[index].number);
@@ -344,7 +332,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       RaisedButton(
-                        color: Color.fromRGBO(39, 39, 37, 1),
+                        color: Colors.green,
                         onPressed: () {
                           FocusManager.instance.primaryFocus.unfocus();
                           _endQueue(holds[index].number);

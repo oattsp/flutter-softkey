@@ -136,7 +136,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       children: [
                         Expanded(
                           child: RaisedButton(
-                            color: Color.fromRGBO(39, 39, 37, 1),
+                            color: Colors.green,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(

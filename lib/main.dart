@@ -18,7 +18,7 @@ class Main extends StatelessWidget {
         BotToastNavigatorObserver()
       ],
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(39, 39, 37, 1),
+        primarySwatch: Colors.green,
         fontFamily: 'Sarabun',
       ),
       home: HomePage(),
